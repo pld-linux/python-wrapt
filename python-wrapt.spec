@@ -6,18 +6,22 @@
 Summary:	Python 2 module for decorators, wrappers and monkey patching
 Summary(pl.UTF-8):	Moduł Pythona 2 do dekorowania, opakowywania i łatania w locie
 Name:		python-%{module}
-Version:	1.13.3
-Release:	6
+# keep < 1.16 here for python2 support
+Version:	1.15.0
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/wrapt/
 Source0:	https://files.pythonhosted.org/packages/source/w/wrapt/%{module}-%{version}.tar.gz
-# Source0-md5:	50efce974cc8a0d39fd274d74eb0fd1e
+# Source0-md5:	1d5b17810f1fb5db543185651ddb0fce
 URL:		https://github.com/GrahamDumpleton/wrapt
-BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-setuptools >= 1:38.3.0
+%if %{with tests}
+BuildRequires:	python-pytest
+%endif
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
 Requires:	python-modules >= 1:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
